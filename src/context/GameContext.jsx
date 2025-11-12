@@ -16,3 +16,28 @@ export const GameProvider = ({ children }) => {
 
   const restartGame = () => {
     setGameState("welcome");
+  };
+
+  const whackMole = () => {
+    setScore((prev) => prev + 1);
+    setActiveHole(Math.floor(Math.random() * 9));
+  };
+
+  return (
+    <GameContext.Provider
+      value={{
+        score,
+        activeHole,
+        holes,
+        gameState,
+        startGame,
+        restartGame,
+        whackMole,
+      }}
+    >
+      {children}
+    </GameContext.Provider>
+  );
+};
+
+export const useGameContext = () => useContext(GameContext);
