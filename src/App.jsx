@@ -1,12 +1,11 @@
 import React from "react";
-import { GameProvider } from "./context/GameContext";
-import useGame from "./hooks/useGame";
+import { GameProvider, useGameContext } from "./context/GameContext";
 import WelcomeScreen from "./components/WelcomeScreen";
 import GameBoard from "./components/GameBoard";
 import "./index.css";
 
 function GameView() {
-  const { gameState } = useGame();
+  const { gameState } = useGameContext();
   return gameState === "welcome" ? <WelcomeScreen /> : <GameBoard />;
 }
 
